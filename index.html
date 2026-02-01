@@ -112,7 +112,459 @@
     }
 
     @media (min-width: 576px) { .bottom-nav { display: none; } }
-  </style>
+
+    /* News Ticker - Perbaikan */
+.news-ticker {
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    background-color: #046c3c;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.news-content {
+    position: absolute;
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 50px;
+    animation: scroll-left 20s linear infinite;
+}
+
+/* Animasi yang benar */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Pause pada hover */
+.news-ticker:hover .news-content {
+    animation-play-state: paused;
+}
+
+/* Hero Slider */
+.hero-slider {
+  position: relative;
+  min-height: 90vh;
+  overflow: hidden;
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+}
+
+.mySlides {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.mySlides.fade {
+  animation: fadeEffect 1.5s;
+}
+
+@keyframes fadeEffect {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* Active slide */
+.mySlides.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Hero dalam slide */
+.mySlides .hero {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Paket Unggulan */
+#headerCarousel{
+            width: 95%;
+        }
+
+  /* Tombol paket */
+  /* Carousel Control Buttons */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(25, 135, 84, 0.8); /* Warna hijau dengan transparansi */
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 15px;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(20, 108, 67, 1); /* Hijau lebih gelap saat hover */
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control-prev {
+    left: 10px;
+}
+
+.carousel-control-next {
+    right: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 25px;
+    height: 25px;
+    background-size: 100%, 100%;
+    filter: brightness(0) invert(1); /* Membuat icon berwarna putih */
+}
+
+/* Untuk mobile devices */
+@media (max-width: 768px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+        margin: 0 10px;
+    }
+    
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Opsi alternatif dengan border */
+.carousel-control-prev.alternative,
+.carousel-control-next.alternative {
+    background-color: rgba(10, 15, 20, 0.7);
+    border: 2px solid var(--primary);
+}
+
+.carousel-control-prev.alternative:hover,
+.carousel-control-next.alternative:hover {
+    background-color: var(--primary);
+    border-color: var(--accent);
+}
+/* Opsi dengan shadow */
+.carousel-control-prev.shadowed,
+.carousel-control-next.shadowed {
+    background-color: var(--primary);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: none;
+}
+
+.carousel-control-prev.shadowed:hover,
+.carousel-control-next.shadowed:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    background-color: var(--primary-dark);
+}
+
+ /* Alur Pendaftaran */
+ /* Alur Pendaftaran Vertical Mobile */
+.alur-vertical-mobile {
+    background: var(--dark);
+    position: relative;
+}
+
+/* Timeline Vertical */
+.timeline-vertical {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-left: 40px;
+}
+
+.timeline-vertical::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+        var(--primary) 0%,
+        var(--primary) 30%,
+        rgba(25, 135, 84, 0.3) 100%);
+}
+
+.timeline-vertical-item {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.timeline-vertical-marker {
+    position: absolute;
+    left: -40px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.marker-number {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    background: var(--dark);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 2px solid;
+}
+
+.marker-icon {
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Marker Colors */
+.marker-positive {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border: 3px solid rgba(25, 135, 84, 0.3);
+}
+
+.marker-positive .marker-number {
+    border-color: var(--primary);
+}
+
+/* Timeline Content */
+.timeline-vertical-content {
+    background: var(--dark-2);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 20px;
+    width: 100%;
+    margin-left: 20px;
+    position: relative;
+}
+
+.timeline-vertical-content::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 25px;
+    width: 20px;
+    height: 20px;
+    background: var(--dark-2);
+    border-left: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transform: rotate(45deg);
+}
+
+.timeline-vertical-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.timeline-vertical-header h5 {
+    color: var(--light);
+    margin: 0;
+    flex: 1;
+}
+
+/* Status Styles */
+.timeline-vertical-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.status-positive {
+    background: rgba(25, 135, 84, 0.15);
+    color: var(--accent);
+    border: 1px solid rgba(25, 135, 84, 0.3);
+}
+
+.status-neutral {
+    background: rgba(108, 117, 125, 0.15);
+    color: #8a9bb5;
+    border: 1px solid rgba(108, 117, 125, 0.3);
+}
+
+.status-negative {
+    background: rgba(220, 53, 69, 0.15);
+    color: #fd7e14;
+    border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+/* Details Sections */
+.timeline-vertical-details {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+}
+
+.document-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.document-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+
+.document-item i {
+    color: var(--accent);
+}
+
+.detail-contact {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--light);
+    font-size: 0.9rem;
+}
+
+.btn-telegram {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #0088cc;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-telegram:hover {
+    background: #0077b3;
+    transform: translateY(-2px);
+}
+
+.payment-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bank-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+
+.bank-item i {
+    color: var(--accent);
+}
+
+.detail-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+
+.detail-info i {
+    color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .timeline-vertical {
+        padding-left: 35px;
+    }
+    
+    .timeline-vertical-marker {
+        width: 45px;
+        height: 45px;
+        left: -35px;
+    }
+    
+    .marker-icon {
+        font-size: 1rem;
+    }
+    
+    .timeline-vertical-content {
+        padding: 15px;
+        margin-left: 15px;
+    }
+    
+    .timeline-vertical-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .timeline-vertical-status {
+        align-self: flex-start;
+    }
+    
+    .document-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animations */
+.timeline-vertical-item {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideInRight 0.5s ease forwards;
+}
+
+.timeline-vertical-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-vertical-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-vertical-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-vertical-item:nth-child(4) { animation-delay: 0.4s; }
+.timeline-vertical-item:nth-child(5) { animation-delay: 0.5s; }
+.timeline-vertical-item:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+</style>
+
 </head>
 <body>
 
@@ -128,12 +580,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navMenu">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="paket-umroh.html">Paket Umroh</a></li>
-        <li class="nav-item"><a class="nav-link" href="paket-haji.html">Paket Haji</a></li>
-        <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
-        <li class="nav-item"><a class="nav-link" href="testimoni.html">Testimoni</a></li>
-        <li class="nav-item"><a class="nav-link" href="tentang-kami.html">Tentang Kami</a></li>
-        <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Tentang Kami</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Perlengkapan</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Paket Umroh</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Paket Haji</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Karyawan</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Alur Pendaftaran</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Syarat Pendaftaran</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Mitra Travel</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Kontak Admin</a></li>
       </ul>
     </div>
   </div>
@@ -142,24 +597,66 @@
 <main class="pt-5 mt-3">
 
   <!-- Hero -->
-  <section class="hero" style="background-image: url(Img/foto-potrait-Nun.jpg);">
-    <div class="container" data-aos="fade-up">
-      
-      <a href="https://t.me/WQtravelbot" target="_blank" class="btn btn-primary btn-lg px-5 py-3 fw-bold shadow-lg" style="margin-top:65%">
-        <i class="bi bi-telegram me-2"></i>Telegram Bot
-      </a>
+ <!-- Hero Slider -->
+<section class="hero-slider">
+  <div class="slideshow-container">
+    <!-- Slide 1 -->
+    <div class="mySlides fade">
+      <div class="hero" style="background-image: url(Img/foto-potrait-Nun.jpg);">
+        <div class="container" data-aos="fade-up">
+          <a href="https://t.me/WQtravelbot" target="_blank" class="btn btn-primary btn-lg px-5 py-3 fw-bold shadow-lg" style="margin-top:65%">
+            <i class="bi bi-telegram me-2"></i>Telegram Bot
+          </a>
+        </div>
+      </div>
     </div>
-  </section>
+    
+    <!-- Slide 2 -->
+    <div class="mySlides fade">
+      <div class="hero" style="background-image: url(Img/header.jpg);">
+        <div class="container" data-aos="fade-up">
+          <h1 class="tajawal display-4 fw-bold mb-3" style="margin-top:35%">  Umroh Berkah</h1>
+          <p class="fs-5 mb-4">Perjalanan spiritual penuh makna</p>
+          <a href="#paketUnggulan" class="btn btn-primary btn-lg px-5 py-3 fw-bold shadow-lg">
+            Lihat Paket
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 3 -->
+    <div class="mySlides fade">
+      <div class="hero" style="background-image: url(Img/header2.jpg);">
+        <div class="container" data-aos="fade-up">
+          <h1 class="tajawal display-4 fw-bold mb-3" style="margin-top:35%">Haji Mabrur</h1>
+          <p class="fs-5 mb-4">Persiapan ibadah haji terbaik</p>
+          <a href="paket-haji.html" class="btn btn-primary btn-lg px-5 py-3 fw-bold shadow-lg">
+            Info Haji
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Paket Unggulan -->
-  <section class="container py-5" id="paketUnggulan">
-    <h2 class="tajawal mx-auto d-block text-center section-title mb-5" data-aos="fade-up">Paket Unggulan 2026</h2>
+  <!-- News Stiker -->
+   <section id="mitra">
+    <div class="news-ticker" id="newsTickerContainer">
+        <div class="news-content" id="newsTicker">
+            Waridat Qolbi Travel - Ibadah Nyaman, Hati Tenang
+        </div>
+    </div>
+   </section>
+
+  <!-- Alasan -->
+  <section class="container py-5" id="alasan">
+    <h2 class="tajawal mx-auto d-block text-center section-title mb-5" data-aos="fade-up">Mengapa Harus WQ Travel?</h2>
     <div class="row g-4">
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
         <div class="cardPaket card h-100 text-center">
           <div class="card-body py-5">
             <i class="bi bi-moon-stars-fill display-1 text-accent mb-3" style="color:var(--accent)" style="color:var(--accent)"></i>
-            <h4>Umroh Reguler</h4>
+            <h4>Pelayanan Nyaman</h4>
             <p class="text-gray">Hotel bintang 4 dekat Masjidil Haram, makan 3x sehari, ziarah lengkap</p>
             <h5 class="text-accent mt-3">Mulai Rp 28 jt</h5>
           </div>
@@ -169,7 +666,7 @@
         <div class="cardPaket card h-100 text-center">
           <div class="card-body py-5">
             <i class="bi bi-star-fill display-1 text-accent mb-3" style="color:var(--accent)"></i>
-            <h4>Umroh VIP</h4>
+            <h4>Sesuai Syariat</h4>
             <p class="text-gray">Hotel bintang 5 view Haram, fast track, private guide, bus AC premium</p>
             <h5 class="text-accent mt-3">Mulai Rp 42 jt</h5>
           </div>
@@ -179,7 +676,7 @@
         <div class="cardPaket card h-100 text-center">
           <div class="card-body py-5">
             <i class="bi bi-mosque display-1 text-accent mb-3" style="color:var(--accent)"></i>
-            <h4>Haji Khusus 2026</h4>
+            <h4>100% Berangkat</h4>
             <p class="text-gray">Kuota terbatas, hotel Azizia/Makkah, transportasi VIP, pembimbing senior</p>
             <h5 class="text-accent mt-3">Hubungi Bot</h5>
           </div>
@@ -187,6 +684,248 @@
       </div>
     </div>
   </section>
+
+  <!-- Paket Unggulan -->
+  <section class="container py-5" id="paketUnggulan">
+    <h2 class="tajawal mx-auto d-block text-center section-title mb-5" data-aos="fade-up">Paket Unggulan Kami</h2>
+    <div id="headerCarousel" class="carousel slide m-5 d-block mx-auto" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="w-100 mx-auto d-block" src="Img/contoh-Paket.png" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+                <img class="w-100 mx-auto d-block" src="Img/header.jpg" alt="Slide 2">
+            </div>
+            <div class="carousel-item">
+                <img class="w-100 mx-auto d-block" src="Img/contoh-Paket.png" alt="Slide 3">
+            </div>
+            <div class="carousel-item">
+                <img class="w-100 mx-auto d-block" src="Img/header.jpg" alt="Slide 4">
+            </div>
+        </div>
+        
+       <button class="carousel-control-prev shadowed" type="button" data-bs-target="#headerCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next shadowed" type="button" data-bs-target="#headerCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#headerCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#headerCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#headerCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#headerCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+    </div>
+  </section>
+
+  <!-- Alur Pendaftaran -->
+<!-- Alur Pendaftaran Mobile Vertical -->
+<section class="alur-vertical-mobile py-5" id="alurPendaftaran">
+    <div class="container">
+        <h2 class="tajawal text-center section-title mb-4" data-aos="fade-up">Alur Pendaftaran</h2>
+        <p class="text-center text-gray mb-5" data-aos="fade-up" data-aos-delay="100">
+            Ikuti 6 langkah mudah untuk perjalanan spiritual Anda
+        </p>
+        
+        <!-- Timeline Vertical -->
+        <div class="timeline-vertical" data-aos="fade-up">
+            <!-- Step 1 -->
+            <div class="timeline-vertical-item">
+                <div class="timeline-vertical-marker marker-positive">
+                    <div class="marker-number">1</div>
+                    <div class="marker-icon">
+                        <i class="bi bi-headset"></i>
+                    </div>
+                </div>
+                <div class="timeline-vertical-content">
+                    <div class="timeline-vertical-header">
+                        <h5 class="tajawal mb-1">Hubungi Admin</h5>
+                        <div class="timeline-vertical-status status-positive">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Langkah Pertama</span>
+                        </div>
+                    </div>
+                    <p class="text-gray small mb-2">
+                        Konsultasikan kebutuhan ibadah Anda dengan admin kami melalui WhatsApp atau Telegram
+                    </p>
+                    <div class="timeline-vertical-details">
+                        <span class="detail-contact">
+                            <i class="bi bi-telegram text-success"></i>
+                            +62 811-355-455
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="timeline-vertical-item">
+                <div class="timeline-vertical-marker marker-positive">
+                    <div class="marker-number">2</div>
+                    <div class="marker-icon">
+                        <i class="bi bi-folder-fill"></i>
+                    </div>
+                </div>
+                <div class="timeline-vertical-content">
+                    <div class="timeline-vertical-header">
+                        <h5 class="tajawal mb-1">Kumpulkan Berkas</h5>
+                        <div class="timeline-vertical-status status-positive">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Dokumen Wajib</span>
+                        </div>
+                    </div>
+                    <p class="text-gray small mb-2">
+                        Siapkan dokumen lengkap untuk pendaftaran
+                    </p>
+                    <div class="timeline-vertical-details">
+                        <div class="document-list">
+                            <span class="document-item">
+                                <i class="bi bi-file-earmark-text"></i>
+                                Kartu Keluarga
+                            </span>
+                            <span class="document-item">
+                                <i class="bi bi-person-badge"></i>
+                                KTP
+                            </span>
+                            <span class="document-item">
+                                <i class="bi bi-file-earmark-medical"></i>
+                                Surat Nikah / Akta Lahir
+                            </span>
+                            <span class="document-item">
+                                <i class="bi bi-camera"></i>
+                                Pas Foto 4x6
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="timeline-vertical-item">
+                <div class="timeline-vertical-marker marker-positive">
+                    <div class="marker-number">3</div>
+                    <div class="marker-icon">
+                        <i class="bi bi-robot"></i>
+                    </div>
+                </div>
+                <div class="timeline-vertical-content">
+                    <div class="timeline-vertical-header">
+                        <h5 class="tajawal mb-1">Pendaftaran via Bot</h5>
+                        <div class="timeline-vertical-status status-positive">
+                            <i class="bi bi-clock"></i>
+                            <span>Proses Online</span>
+                        </div>
+                    </div>
+                    <p class="text-gray small mb-2">
+                        Daftar melalui Telegram Bot WQ Travel untuk pengisian data dan pemilihan paket
+                    </p>
+                    <div class="timeline-vertical-details">
+                        <a href="https://t.me/WQtravelbot" target="_blank" class="btn-telegram">
+                            <i class="bi bi-telegram"></i>
+                            Buka Telegram Bot
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 4 -->
+            <div class="timeline-vertical-item">
+                <div class="timeline-vertical-marker marker-positive">
+                    <div class="marker-number">4</div>
+                    <div class="marker-icon">
+                        <i class="bi bi-credit-card-fill"></i>
+                    </div>
+                </div>
+                <div class="timeline-vertical-content">
+                    <div class="timeline-vertical-header">
+                        <h5 class="tajawal mb-1">Lakukan Pembayaran</h5>
+                        <div class="timeline-vertical-status status-positive">
+                            <i class="bi bi-currency-exchange"></i>
+                            <span>Transfer Bank</span>
+                        </div>
+                    </div>
+                    <p class="text-gray small mb-2">
+                        Selesaikan pembayaran DP atau lunas sesuai ketentuan
+                    </p>
+                    <div class="timeline-vertical-details">
+                        <div class="payment-info">
+                            <span class="bank-item">
+                                <i class="bi bi-bank"></i>
+                                BSI: 123-456-7890
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 5 -->
+            <div class="timeline-vertical-item">
+                <div class="timeline-vertical-marker marker-positive">
+                    <div class="marker-number">5</div>
+                    <div class="marker-icon">
+                        <i class="bi bi-mortarboard-fill"></i>
+                    </div>
+                </div>
+                <div class="timeline-vertical-content">
+                    <div class="timeline-vertical-header">
+                        <h5 class="tajawal mb-1">Manasik</h5>
+                        <div class="timeline-vertical-status status-positive">
+                            <i class="bi bi-calendar-check"></i>
+                            <span>Jadwal Fleksibel</span>
+                        </div>
+                    </div>
+                    <p class="text-gray small mb-2">
+                        Ikuti bimbingan manasik untuk memahami tata cara ibadah umroh/haji yang benar
+                    </p>
+                    <div class="timeline-vertical-details">
+                        <span class="detail-info">
+                            <i class="bi bi-info-circle"></i>
+                            Jadwal akan diinformasikan setelah pembayaran
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 6 -->
+            <div class="timeline-vertical-item">
+                <div class="timeline-vertical-marker marker-positive">
+                    <div class="marker-number">6</div>
+                    <div class="marker-icon">
+                        <i class="bi bi-airplane-fill"></i>
+                    </div>
+                </div>
+                <div class="timeline-vertical-content">
+                    <div class="timeline-vertical-header">
+                        <h5 class="tajawal mb-1">Berangkat</h5>
+                        <div class="timeline-vertical-status status-positive">
+                            <i class="bi bi-airplane"></i>
+                            <span>Keberangkatan</span>
+                        </div>
+                    </div>
+                    <p class="text-gray small mb-2">
+                        Persiapan final dan keberangkatan menuju Tanah Suci dengan didampingi pembimbing
+                    </p>
+                    <div class="timeline-vertical-details">
+                        <span class="detail-info">
+                            <i class="bi bi-geo-alt"></i>
+                            Hotel bintang 4/5 dekat Masjidil Haram
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Button -->
+        <div class="text-center mt-5" data-aos="zoom-in">
+            <a href="https://t.me/WQTravel" target="_blank" class="btn btn-primary btn-lg px-5 py-3 fw-bold">
+                <i class="bi bi-whatsapp me-2"></i> Mulai Langkah Pertama
+            </a>
+        </div>
+    </div>
+</section>
 
   <!-- Call to Action -->
   <section class="bg-gradient py-5 text-center" style="background: linear-gradient(135deg, #146c43, #198754);">
@@ -206,8 +945,8 @@
 <nav class="bottom-nav d-md-none">
   <div class="d-flex justify-content-around">
     <a href="index.html" class="nav-link active"><i class="bi bi-house-door-fill fs-4"></i><div>Home</div></a>
-    <a href="#paketUnggulan" class="nav-link"><i class="bi bi-geo-alt fs-4"></i><div>Paket</div></a>
-    <a href="galeri.html" class="nav-link"><i class="bi bi-images fs-4"></i><div>Galeri</div></a>
+    <a href="#paketUnggulan" class="nav-link"><i class="bi bi-people-fill fs-4"></i><div>Karyawan</div></a>
+    <a href="galeri.html" class="nav-link"><i class="bi bi-building fs-4"></i><div>Paket</div></a>
     <a href="https://t.me/WQtravelbot" class="nav-link"><i class="bi bi-telegram fs-4"></i><div>Bot</div></a>
   </div>
 </nav>
@@ -216,6 +955,54 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init({ once: true, duration: 900, offset: 80 });
+
+  // News Ticker - versi sederhana dan pasti jalan
+  const newsTicker = document.getElementById('newsTicker');
+  if (newsTicker) {
+    // Clone teks untuk infinite loop
+    const text = newsTicker.textContent;
+    newsTicker.innerHTML = text + ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' + text + ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' + text;
+    
+    // Reset posisi jika diperlukan
+    newsTicker.style.animation = 'scroll-left 30s linear infinite';
+  }
+
+  // Hero Slider Otomatis
+  let slideIndex = 0;
+  const slides = document.getElementsByClassName("mySlides");
+  
+  function showSlides() {
+    // Sembunyikan semua slides
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].classList.remove("active");
+      slides[i].style.opacity = "0";
+    }
+    
+    // Increment index
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+    
+    // Tampilkan slide aktif
+    if (slides[slideIndex - 1]) {
+      slides[slideIndex - 1].classList.add("active");
+      slides[slideIndex - 1].style.opacity = "1";
+    }
+    
+    // Ganti slide setiap 5 detik
+    setTimeout(showSlides, 5000);
+  }
+  
+  // Mulai slider saat halaman dimuat
+  document.addEventListener('DOMContentLoaded', function() {
+    if (slides.length > 0) {
+      // Tampilkan slide pertama
+      slides[0].classList.add("active");
+      slides[0].style.opacity = "1";
+      
+      // Mulai rotasi otomatis
+      setTimeout(showSlides, 5000);
+    }
+  });
 </script>
 </body>
 </html>

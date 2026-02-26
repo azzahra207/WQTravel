@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Invoice - Waridat Qolbi Travel</title>
+  
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    :root {
+      --primary: #198754;       /* hijau islami */
+      --primary-dark: #146c43;
+      --accent: #2ecc71;
+      --dark: #0f171e;
+      --dark-2: #17212e;
+      --gray: #6c757d;
+      --light: #e9ecef;
+      --border: rgba(40, 167, 69, 0.2);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--dark);
+      color: var(--light);
+      padding-bottom: 80px;
+    }
+
+    h1, h2, h3, .tajawal {
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    .navbar {
+      background: var(--dark-2) !important;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .invoice-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #1a2533;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .invoice-header {
+      background: linear-gradient(135deg, #198754 0%, #146c43 100%);
+      padding: 2.5rem 1.5rem;
+      color: white;
+      text-align: center;
+    }
+
+    .invoice-body {
+      padding: 2rem 1.5rem;
+    }
+
+    .table {
+      --bs-table-bg: #1e2c3a;
+      --bs-table-color: var(--light);
+      --bs-table-border-color: var(--border);
+    }
+
+    .table th {
+      background: rgba(25, 135, 84, 0.2);
+      color: var(--accent);
+    }
+
+    .total-row {
+      font-weight: 700;
+      font-size: 1.3rem;
+      background: rgba(25, 135, 84, 0.15) !important;
+    }
+
+    .status-paid {
+      background: rgba(40, 167, 69, 0.3);
+      color: #2ecc71;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .status-pending {
+      background: rgba(220, 53, 69, 0.3);
+      color: #dc3545;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .btn-print {
+      background: var(--primary);
+      border: none;
+    }
+
+    .btn-share {
+      background: #25D366;
+      border: none;
+    }
+
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white; color: black; }
+      .invoice-container { box-shadow: none; border: 1px solid #ccc; background: white; color: black; }
+      .invoice-header { background: #198754 !important; color: white !important; }
+      .table th { background: #e9ecef !important; color: black !important; }
+      .total-row { background: #d4edda !important; color: black !important; }
+      a { color: black !important; text-decoration: none !important; }
+    }
+
+    @media (max-width: 576px) {
+      .invoice-body { padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container-fluid px-3">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="assets/logo.png" alt="WQTravel" class="me-2" style="height:42px;">
+      <span class="fw-bold">Waridat Qolbi</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="daftar-umroh.html">Pendaftaran</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="pt-5 mt-4 container">
+
+  <div class="invoice-container mt-4" data-aos="fade-up">
+    
+    <!-- Header Invoice -->
+    <div class="invoice-header">
+      <h2 class="tajawal fw-bold mb-1">INVOICE</h2>
+      <p class="mb-1">Waridat Qolbi Travel</p>
+      <p class="small mb-0">Umroh & Haji Berkah • Syariah Terpercaya</p>
+      <p class="small">Jl. Contoh No. 88, Jakarta • WA: 0812-3456-7890</p>
+    </div>
+
+    <!-- Body -->
+    <div class="invoice-body">
+      
+      <!-- Info Dasar -->
+      <div class="row mb-4">
+        <div class="col-6">
+          <h6 class="text-primary mb-1">No. Invoice</h6>
+          <p class="fw-bold">INV/WQ/2026/00123</p>
+          
+          <h6 class="text-primary mt-3 mb-1">Tanggal</h6>
+          <p>28 Januari 2026</p>
+        </div>
+        <div class="col-6 text-end">
+          <h6 class="text-primary mb-1">Status Pembayaran</h6>
+          <span class="status-paid">LUNAS</span>
+          <!-- Ganti ke <span class="status-pending">Menunggu Pembayaran</span> jika belum lunas -->
+          
+          <h6 class="text-primary mt-3 mb-1">Jatuh Tempo</h6>
+          <p>11 Februari 2026</p>
+        </div>
+      </div>
+
+      <!-- Info Jamaah & Paket -->
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <h5 class="tajawal mb-2">Jamaah</h5>
+          <p class="mb-1"><strong>Nama Lengkap:</strong> Ahmad bin Abdullah</p>
+          <p class="mb-1"><strong>Nomor HP:</strong> 081234567890</p>
+          <p class="mb-1"><strong>Alamat:</strong> Jl. Raya Kebon Jeruk No.45, Jakarta Barat</p>
+          <p class="mb-1"><strong>NIK/Paspor:</strong> 317xxxxxxxxxx</p>
+        </div>
+        <div class="col-md-6">
+          <h5 class="tajawal mb-2">Detail Paket</h5>
+          <p class="mb-1"><strong>Paket:</strong> Umroh Reguler 12 Hari</p>
+          <p class="mb-1"><strong>Keberangkatan:</strong> 15 Maret 2026</p>
+          <p class="mb-1"><strong>Pulang:</strong> 26 Maret 2026</p>
+          <p class="mb-1"><strong>Pembimbing:</strong> Ustadz Yusuf Mansur</p>
+        </div>
+      </div>
+
+      <!-- Rincian Biaya -->
+      <h5 class="tajawal mb-3 text-primary">Rincian Biaya</h5>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Keterangan</th>
+              <th class="text-end">Jumlah (Rp)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Biaya Paket Umroh Reguler (tiket PP, hotel, transport, makan, visa)</td>
+              <td class="text-end">28.500.000</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Biaya Handling & Asuransi</td>
+              <td class="text-end">1.200.000</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Biaya Administrasi & Manasik</td>
+              <td class="text-end">800.000</td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="2" class="text-end">TOTAL TAGIHAN</td>
+              <td class="text-end">30.500.000</td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="2" class="text-end">TOTAL TERBAYAR</td>
+              <td class="text-end">30.500.000</td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="2" class="text-end">SISA PEMBAYARAN</td>
+              <td class="text-end text-success">Rp 0 (LUNAS)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pembayaran -->
+      <div class="mt-4">
+        <h5 class="tajawal mb-2 text-primary">Informasi Pembayaran</h5>
+        <p class="mb-1">Bank Syariah Indonesia (BSI)</p>
+        <p class="mb-1"><strong>Atas Nama:</strong> PT Waridat Qolbi Travel</p>
+        <p class="mb-1"><strong>No. Rekening:</strong> 7123 4567 89</p>
+        <p class="small text-muted">Segera konfirmasi pembayaran via WA ke 0812-3456-7890</p>
+      </div>
+
+      <!-- Syarat & Ketentuan -->
+      <div class="mt-4">
+        <h6 class="text-primary mb-2">Syarat & Ketentuan</h6>
+        <ul class="small text-muted">
+          <li>Pembayaran dianggap sah setelah dikonfirmasi oleh tim keuangan.</li>
+          <li>Biaya di atas belum termasuk biaya pribadi (belanja, tambahan room, dll).</li>
+          <li>Jamaah wajib melengkapi dokumen sesuai ketentuan Kemenag & Saudi.</li>
+          <li>Pembatalan dikenakan biaya sesuai kebijakan travel (min 30% jika < 45 hari).</li>
+          <li>Alhamdulillahirobbil 'alamin, semoga perjalanan ibadah lancar dan diterima Allah SWT.</li>
+        </ul>
+      </div>
+
+      <!-- Tanda Tangan -->
+      <div class="text-center mt-5">
+        <p class="mb-1">Hormat kami,</p>
+        <p class="fw-bold tajawal fs-5">Waridat Qolbi Travel</p>
+        <p class="small text-muted">PPIU Resmi • Terdaftar di Kemenag RI</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Tombol Aksi (mobile-friendly) -->
+  <div class="container mt-4 text-center no-print">
+    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+      <button class="btn btn-primary btn-lg px-5 py-3 fw-bold" onclick="window.print()">
+        <i class="bi bi-printer me-2"></i> CETAK INVOICE
+      </button>
+      <!-- <button class="btn btn-success btn-lg px-5 py-3 fw-bold" onclick="shareViaWA()">
+        <i class="bi bi-whatsapp me-2"></i> SHARE via WA
+      </button> -->
+    </div>
+  </div>
+
+</main>
+
+<!-- Bootstrap Icons (opsional untuk icon) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ once: true, duration: 800 });
+
+  function shareViaWA() {
+    const text = `Assalamu'alaikum wr. wb.\n\nBerikut Invoice Umroh dari Waridat Qolbi Travel:\nNo. INV/WQ/2026/00123\nNama: Ahmad bin Abdullah\nTotal: Rp 30.500.000 (LUNAS)\n\nTerima kasih atas kepercayaannya. Semoga menjadi amal jariyah.\n\nLink invoice: (ganti dengan link jika online)`;
+    const url = `https://t.me/?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+    Swal.fire({
+      title: 'Alhamdulillah',
+      text: 'Membuka Telegram untuk share invoice...',
+      icon: 'success',
+      confirmButtonColor: '#198754'
+    });
+  }
+</script>
+
+</body>
+</html>
